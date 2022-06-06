@@ -16,6 +16,11 @@
                                 <span>Category: {{ $post->category->name }}</span>
                                 <h5>Slug:</h5>
                                 <div>{{ $post->slug }}</div>
+                                <dd>
+                                    @foreach ($post->tags as $tag)
+                                        <span>{{ $tag->name }}</span>
+                                    @endforeach
+                                </dd>
                                 <div>
                                     <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
                                     <a href="">Delete</a>
