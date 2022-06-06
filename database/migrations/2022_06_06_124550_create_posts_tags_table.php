@@ -14,8 +14,18 @@ class CreatePostsTagsTable extends Migration
     public function up()
     {
         Schema::create('posts_tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            if (!Schema::hasTable('post_tag')){
+                Schema::create('post_tag', function (Blueprint $table){
+                    if(!Schema::hasColumn('post_tag', 'post_id')){
+                        $table->unsignedBigInteger('post_id');
+                        $table->foreign('post_id')->references('id')->on('posts');
+                    }
+                    if(!Schema::hasColumn('post_tag', 'post_id')){
+                        $table->unsignedBigInteger('tag_id');
+                        $table->foreign('tag_id')->references('id')->on('tags');
+                    }
+                });
+            }
         });
     }
 
