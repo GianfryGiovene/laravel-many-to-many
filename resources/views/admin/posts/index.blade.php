@@ -16,6 +16,9 @@
                                     <span>{{ $post->id }}</span>
                                     <a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a>
                                     <span>{{ $post->category->name }}</span>
+                                    @foreach ($post->tags as $tag)
+                                        <span>{{ $tag->name }}</span>
+                                    @endforeach
                                     <div>
                                         <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
 
