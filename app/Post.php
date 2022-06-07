@@ -23,11 +23,11 @@ class Post extends Model
         }
         return $slug;
     }
-
+    // funzione per tabella principalle one to many
     public function category(){
         return $this->belongsTo('App\Category');
     }
-
+    // funzione per tabella many to many
     public function tags(){
         return $this->belongsToMany('App\Tag');
     }

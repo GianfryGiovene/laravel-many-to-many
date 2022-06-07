@@ -53,6 +53,7 @@ class PostController extends Controller
             'category_id'=>'exists:categories,id',
             'tags'=>'exists:tags,id'
         ],
+        // messaggi di errori nel caso condizioni sopra nn verificate
         [
             'title.required'=>'Titolo deve essere valorizzato',
             'title.max'=>'Hai superato i 250 caratteri',
@@ -124,6 +125,7 @@ class PostController extends Controller
             'category_id'=>'exists:categories,id',
             'tags'=>'exists:tags,id'
         ],
+        // messaggi di errori nel caso condizioni sopra nn verificate
         [
             'title.required'=>'Titolo deve essere valorizzato',
             'title.max'=>'Hai superato i 250 caratteri',
