@@ -137,6 +137,8 @@ class PostController extends Controller
         $post->slug= Post::convertToSlug($post->title);
         if(array_key_exists('tags', $postData)){
             $newPost->tags()->sync($postData['tags']);
+        }else{
+            $post->tags()->sync([]);
         }
         $post->update();
         return redirect()->route('admin.posts.index');
@@ -152,7 +154,11 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
-        $post->delete();
+        if($post){
+            $post->tags()->sync([]);
+            $post->delete();
+        }
+
         return redirect()->route('admin.posts.index');
     }
 }
